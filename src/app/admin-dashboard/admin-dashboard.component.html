@@ -1,0 +1,95 @@
+<div class="ml-2 mt-2 mr-2">
+  <nav class="navbar.navbar-light bg-indigo-500 rounded">
+    <div class="continer-fluid">
+      <h1 style="color: aliceblue;" class="ml-2 mb-2 text-2xl">iServeU Employee Details</h1>
+      <div class="justify-between d-flex ml-2 mr-2 mb-2 px-2 py-2">
+        <button (click)="clickAddEmploye()" type="button" class="btn btn-primary" data-bs-toggle="modal"
+          data-bs-target="#exampleModal" class="btn btn-success bg-green-500">Add Employee</button>
+        <button (click)="logout()" class="btn btn-danger mx-2">Logout</button>
+
+      </div>
+    </div>
+  </nav>
+  <table class="table mt-3">
+    <thead>
+      <tr>
+        <th scope="col"> Employee Id</th>
+        <th scope="col">First Name </th>
+        <th scope="col">Last Name</th>
+        <th scope="col">Email Id</th>
+        <th scope="col">Mob No.</th>
+        <th scope="col">Salary</th>
+        <th scope="col">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let row of employeeData">
+        <td>{{row.id}}</td>
+        <td>{{row.firstName}}</td>
+        <td>{{row.lastName}}</td>
+        <td>{{row.email}}</td>
+        <td>{{row.mobile}}</td>
+        <td>{{row.salary}}</td>
+        <td>
+          <button (click)="onEdit(row)" type="button" class="btn btn-primary" data-bs-toggle="modal"
+            data-bs-target="#exampleModal" class="btn btn-info">Edit</button>
+          <button (click)="deleteEmployee(row)" class="btn btn-danger mx-3">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+
+
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Employee Details</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form [formGroup]="formValue">
+            <div class="mb-3">
+              <label for="formGroupExampleInput" class="form-label">First Name</label>
+              <input type="text" formControlName="firstName" class="form-control" id="formGroupExampleInput"
+                placeholder="First Name">
+                <span *ngIf="firstName && firstName.invalid && firstName?.touched">Enter valid First Name</span>
+            </div>
+            <div class="mb-3">
+              <label for="formGroupExampleInput2" class="form-label">Last Name</label>
+              <input type="text" formControlName="lastName" class="form-control" id="formGroupExampleInput2"
+                placeholder="Last Name">
+                <span *ngIf="lastName && lastName.invalid && lastName?.touched">Enter valid Last Name</span>
+            </div>
+            <div class="mb-3">
+              <label for="formGroupExampleInput2" class="form-label">Email Id</label>
+              <input type="mail" [disabled]="true" formControlName="email" class="form-control" id="formGroupExampleInput2"
+                placeholder="Email Id">
+                <span *ngIf="email && email.invalid && email?.touched">Enter valid email ID</span>
+            </div>
+            <div class="mb-3">
+              <label for="formGroupExampleInput2" class="form-label">Mob No</label>
+              <input type="number" formControlName="mobile" class="form-control" id="formGroupExampleInput2"
+                placeholder="Mob No">
+                <span *ngIf="mobile && mobile.invalid && mobile?.touched">Enter valid Mobile Number</span>
+            </div>
+            <div class="mb-3">
+              <label for="formGroupExampleInput2" class="form-label">Salary</label>
+              <input type="text" formControlName="salary" class="form-control" id="formGroupExampleInput2"
+                placeholder="Salary">
+                <span *ngIf="salary && salary.invalid && salary?.touched">Enter valid Salary</span>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" id="cancel" class="btn btn-secondary bg-gray-500" data-bs-dismiss="modal">Close</button>
+          <button type="button" *ngIf="showAdd" (click)="postEmployeeDetails()" class="btn btn-primary">Add</button>
+          <button type="button"  *ngIf="showUpdate" (click)="updateEmployeeDetails()" [disabled]="formValue.invalid"
+            class="btn btn-primary bg-green-500">Update</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

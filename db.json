@@ -1,0 +1,52 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "firstName": "Biswanath",
+      "lastName": "Sahoo",
+      "email": "bisgwa@gmail.com",
+      "mobile": "9999999999",
+      "salary": "50000"
+    },
+    {
+      "id": 2,
+      "firstName": "Tofan",
+      "lastName": "Parida",
+      "email": "tofan@gmail.com",
+      "mobile": 9999999999,
+      "salary": "99999"
+    }
+  ],
+  "users": [
+    {
+      "name": "demo one",
+      "email": "demo1@gmail.com",
+      "mobile": "9999999999",
+      "password": "44444",
+      "repassword": "44444",
+      "admin": true,
+      "id": 4
+    },
+    {
+      "name": "demo two",
+      "email": "demo2@gmail.com",
+      "mobile": "9999999999",
+      "password": "44444",
+      "repassword": "44444",
+      "admin": false,
+      "id": 5
+    },
+    {
+      "name": "demo three",
+      "email": "demo3@gmail.com",
+      "mobile": "9999999999",
+      "password": "44444",
+      "repassword": "44444",
+      "admin": false,
+      "id": 6
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  }
+}
